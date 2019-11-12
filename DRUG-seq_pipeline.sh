@@ -36,6 +36,7 @@ reference=
 pipeline=0
 echo_prefix=
 dropseq_root=$(dirname $0)/external_tools/Drop-seq_tools-2.1.0
+echo $dropseq_root
 star_executable=STAR
 progname=`basename $0`
 drugseq_root=$(dirname $0)

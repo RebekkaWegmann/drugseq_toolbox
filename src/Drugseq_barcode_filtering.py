@@ -86,7 +86,6 @@ input_bam = args.input_bam #use "-" for stdin, set flag to rb
 output_bam = args.output_bam
 out_dir = args.out_dir
 bc_dir = args.bc_dir
-collapse_wells = args.collapse_wells
 
 if bc_dir==".":
     bc_dir = os.path.abspath(os.path.dirname(sys.argv[0]))
@@ -127,7 +126,7 @@ n_entries=0
 n_correct_xw=0
 n_edited_bc=0
 
-n_bc  = {x:0 for x in bc.Barcode.values}  
+n_bc  = {x:0 for x in expected_bc.Barcode.values}  
 all_bcs =  [None]*50000
 
 
