@@ -214,7 +214,7 @@ then
 else
      # Stage 1
      $echo_prefix $tag_molecules OUTPUT=$tmpdir/unaligned_tagged_Molecular.bam
-     $echo_prefix $tag_cells_1 INPUT=$tmpdir/unaligned_tagged_Molecular.bam OUTPUT=$tmpdir/unaligned_tagged_well.bam
+     $echo_prefix $tag_wells INPUT=$tmpdir/unaligned_tagged_Molecular.bam OUTPUT=$tmpdir/unaligned_tagged_well.bam
      $echo_prefix $filter_bam INPUT=$tmpdir/unaligned_tagged_well.bam OUTPUT=$tmpdir/unaligned_tagged_filtered.bam
 
      # Stage 2
@@ -227,7 +227,7 @@ else
      # Stage 3
      $echo_prefix $filter_barcodes -i $tmpdir/unaligned_tagged_polyA_filtered.bam
 
-     # exit 0 #break here, for testing only
+     exit 0 #break here, for testing only
 
      # Stage 4
      $echo_prefix $sam_to_fastq FASTQ=$tmpdir/unaligned_tagged_BC_filtered.fastq
