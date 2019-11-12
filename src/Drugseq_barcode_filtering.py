@@ -162,9 +162,9 @@ for entry in infile.fetch(until_eof=True):
         if store_discarded:
             print(entry.query_name, file = open(os.path.join(out_dir,'discarded_reads.txt'),'a'))
 
-print('Read %d entries' % n, file = open(os.path.join(out_dir,'barcode_filtering_log.txt'),'a'))
-print('Found %d [%.2f%%] correct barcodes' % (n_correct_xw, n_correct_xw/float(n_enrties)*100), file = open(os.path.join(out_dir,'barcode_filtering_log.txt'),'a'))
-print('Corrected %d [%.2f%%] barcodes' % (n_edited_bc , n_edited_bc/float(n_enrties)*100), file = open(os.path.join(out_dir,'barcode_filtering_log.txt'),'a'))
+print('Read %d entries' % n_entries, file = open(os.path.join(out_dir,'barcode_filtering_log.txt'),'a'))
+print('Found %d [%.2f%%] correct barcodes' % (n_correct_xw, n_correct_xw/float(n_entries)*100), file = open(os.path.join(out_dir,'barcode_filtering_log.txt'),'a'))
+print('Corrected %d [%.2f%%] barcodes' % (n_edited_bc , n_edited_bc/float(n_entries)*100), file = open(os.path.join(out_dir,'barcode_filtering_log.txt'),'a'))
 print('Retained %d [%.2f%%] reads after correction and filtering' % (n_edited_bc+n_correct_xw, (n_edited_bc+n_correct_xw)/float(n_entries)*100), file = open(os.path.join(out_dir,'barcode_filtering_log.txt'),'a'))
 
 infile.close()
@@ -184,9 +184,9 @@ all_bc_counts = {i:all_bcs.count(i) for i in list(set(all_bcs))}
 all_bc_cumsum = np.cumsum(sorted(list(all_bc_counts.values()), reverse=True))/float(50000)
 
 fig, axes = plt.subplots(1,2)
-p1 = axes[0,0].imshow(np.log10(bc_matrix+1));  axes[0,0].set_title('Number of reads per well barcode')
-clb = fig.colorbar(p1, ax=axes[0,0]); clb.set_label('No. BCs, log10')
-p2 = axes[0,1].plot(all_bc_cumsum); axes[1,1].set_title('Cumulative fraction of reads per barcode')
+p1 = axes[0].imshow(np.log10(bc_matrix+1));  axes[0].set_title('Number of reads per well barcode')
+clb = fig.colorbar(p1, ax=axes[0]); clb.set_label('No. BCs, log10')
+p2 = axes[1].plot(all_bc_cumsum); axes[1].set_title('Cumulative fraction of reads per barcode')
 
 fig.set_size_inches(10,4)
 fig.savefig(os.path.join(out_dir,'barcode_filtering_summary.pdf'),bbox_inches='tight')
