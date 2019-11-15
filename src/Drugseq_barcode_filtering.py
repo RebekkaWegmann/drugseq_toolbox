@@ -155,8 +155,8 @@ for entry in infile.fetch(until_eof=True):
            
     if keep:
         well = expected_bc.WellPosition.values[expected_bc.Barcode.values==xw][0]
-        xw = well+'_'+xw
-        entry.set_tag('XW',xw)
+        xc = well+'_'+xw
+        entry.set_tag('XC',xc)
         outfile.write(entry)
     else:
         if store_discarded:

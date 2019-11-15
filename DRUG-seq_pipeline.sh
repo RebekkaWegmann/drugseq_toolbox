@@ -227,7 +227,7 @@ else
      # Stage 3
      $echo_prefix $filter_barcodes -i $tmpdir/unaligned_tagged_polyA_filtered.bam
 
-     exit 0 #break here, for testing only
+     # exit 0 #break here, for testing only
 
      # Stage 4
      $echo_prefix $sam_to_fastq FASTQ=$tmpdir/unaligned_tagged_BC_filtered.fastq
@@ -250,11 +250,11 @@ fi
 ## Stage 6: create DGE matrix
 
 # counting UMIs
-dge="${dropseq_root}/DigitalExpression I=${outdir}/gene_function_tagged.bam O=${outdir}/DGE_matrix_UMIs.txt READ_MQ=10 EDIT_DISTANCE=1 MIN_NUM_GENES_PER_CELL=1000"
+dge="${dropseq_root}/DigitalExpression I=${outdir}/gene_function_tagged.bam O=${outdir}/DGE_matrix_UMIs.txt READ_MQ=10 EDIT_DISTANCE=1 MIN_NUM_GENES_PER_CELL=100"
 $echo_prefix $dge
 
 # counting reads
-dge_reads="${dropseq_root}/DigitalExpression I=${outdir}/gene_function_tagged.bam O=${outdir}/DGE_matrix_reads.txt READ_MQ=10 EDIT_DISTANCE=1 MIN_NUM_GENES_PER_CELL=1000 OUTPUT_READS_INSTEAD=true"
+dge_reads="${dropseq_root}/DigitalExpression I=${outdir}/gene_function_tagged.bam O=${outdir}/DGE_matrix_reads.txt READ_MQ=10 EDIT_DISTANCE=1 MIN_NUM_GENES_PER_CELL=100 OUTPUT_READS_INSTEAD=true"
 $echo_prefix $dge_reads
 
 # collect RNAseq metrics with PICARD
