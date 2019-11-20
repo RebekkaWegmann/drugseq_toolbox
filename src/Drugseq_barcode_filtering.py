@@ -134,9 +134,6 @@ for entry in infile.fetch(until_eof=True):
     n_entries+=1
     keep=True
     xw = entry.get_tag('XW')
-
-    if n_entries<50000:
-    	all_bcs[n_entries]=xw
     
     if xw in expected_bc.Barcode.values:
         n_correct_xw+=1
@@ -152,6 +149,9 @@ for entry in infile.fetch(until_eof=True):
             n_bc[xw]+=1
         else:
             keep=False
+            
+    if n_entries<50000:
+        all_bcs[n_entries]=xw
            
     if keep:
         well = expected_bc.WellPosition.values[expected_bc.Barcode.values==xw][0]
