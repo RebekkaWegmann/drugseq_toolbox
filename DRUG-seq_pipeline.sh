@@ -148,11 +148,11 @@ files_to_delete="${aligned_sorted_bam} ${aligned_sam} ${tagged_unmapped_bam}"
 ## Stage 1: pre-alignment tag
 # Extract UMI (bases 11-20 of barcode read)
 tag_molecules="${dropseq_root}/TagBamWithReadSequenceExtended SUMMARY=${outdir}/unaligned_tagged_Molecular.bam_summary.txt \
-    BASE_RANGE=11-20 BASE_QUALITY=10 BARCODED_READ=1 DISCARD_READ=false TAG_NAME=XM NUM_BASES_BELOW_QUALITY=1 INPUT=${unmapped_bam}"
+    BASE_RANGE=11-20 BASE_QUALITY=10 BARCODED_READ=2 DISCARD_READ=false TAG_NAME=XM NUM_BASES_BELOW_QUALITY=1 INPUT=${unmapped_bam}"
 
 # Extract the well barcode (bases 1-10 of barcode read)
 tag_wells="${dropseq_root}/TagBamWithReadSequenceExtended SUMMARY=${outdir}/unaligned_tagged_well.bam_summary.txt \
-BASE_RANGE=1-10 BASE_QUALITY=10 BARCODED_READ=1 DISCARD_READ=true TAG_NAME=XW NUM_BASES_BELOW_QUALITY=1"
+BASE_RANGE=1-10 BASE_QUALITY=10 BARCODED_READ=2 DISCARD_READ=true TAG_NAME=XW NUM_BASES_BELOW_QUALITY=1"
 
 #discard all reads where any one of the barcode regions has at least 1 base with quality < 10
 filter_bam="${dropseq_root}/FilterBam TAG_REJECT=XQ"
