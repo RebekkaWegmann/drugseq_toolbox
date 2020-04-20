@@ -6,5 +6,5 @@
 while read fraction;
 do
 	echo $fraction
-	java -jar $PICARD DownsampleSam I=gene_function_tagged.bam P=$fraction M=downsample_metrics.txt O=/dev/stdout | python $HOME/nas_1/Data/Rebekka/Splitseq_mapping/check_UMIs_2.py "-"
+	java -jar $PICARD DownsampleSam I=gene_function_tagged.bam P=$fraction M=downsample_metrics.txt O=/dev/stdout | python $DRUGSEQ/src/misc/check_UMIs_2.py "-"
 done < fractions.txt
