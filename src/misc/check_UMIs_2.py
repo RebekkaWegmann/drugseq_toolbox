@@ -33,7 +33,7 @@ output_file = 'read_vs_umi.txt'
 if not os.path.isfile(output_file):
     print('Creating new ouput file')
     with open(output_file, 'w') as f:
-        print('No.reads\tNo.UMIs\tNo.CBCs', file = f)
+        print('No.reads\tNo.UMIs\tpct.dupl.UMI\tNo.CBCs', file = f)
       
 n=0
 n1=0
@@ -65,7 +65,7 @@ for entry in infile.fetch(until_eof=True):
         UMIs.update({combo:1})
 
 with open(output_file, 'a') as f:
-    print('%d\t%d\t%d' % (n,len(UMIs.keys()),len(CBCs.keys())), file = f)
+    print('%d\t%d\t%d' % (n,len(UMIs.keys()),mean(UMIs.values()>1), len(CBCs.keys())), file = f)
 
 infile.close()
 
