@@ -52,20 +52,20 @@ for entry in infile.fetch(until_eof=True):
     gn = entry.get_tag('gn')
     xc = entry.get_tag('XC')
 
-    if xc in CBCs:
+    if xc in CBCs.keys():
         CBCs[xc]+=1
     else:
         CBCs.update({xc:1})
 
     combo = xc+xm+gn
 
-    if xm in UMIs:
+    if combo in UMIs.keys():
         UMIs[combo]+=1
     else:
         UMIs.update({combo:1})
 
 with open(output_file, 'a') as f:
-    print('%d\t%d\t%d' % (n,len(UMIs.keys()),mean(UMIs.values()>1), len(CBCs.keys())), file = f)
+    print('%d\t%d\t%f\t%d' % (n,len(UMIs.keys()),np.mean(np.array(list(UMIs.values()))>1)*100, len(CBCs.keys())), file = f)
 
 infile.close()
 
