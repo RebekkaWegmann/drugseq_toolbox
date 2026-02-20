@@ -7,9 +7,9 @@ The pipeline uses some custom python scripts, and many tools from the [Drop-seq 
 Please refer to the [user manual](./man/Drugseq_toolbox_manual.pdf) for a description of how to use it.
 
 Contact
-This toolbox is provided by the [Snijder lab](https://www.snijderlab.org/) at ETH Zurich.
+This toolbox is provided by the [Snijder lab](https://www.snijderlab.org/) formerly at ETH Zurich, now at Botnar Institute of Immune Engineering (BIIE).
 
-If you have questions or find a bug, son't hesitate to contact Rebekka Wegmann: wegmann@imsb.biol.ethz.ch
+If you have questions or find a bug, son't hesitate to contact Rebekka Wegmann: [rebekka.wegmann@immune.enginering](mailto:rebekka.wegmann@immune.engineering)
 
 Notes and caution
 This tool comes with no warranty and accurate function is not guaranteed.
